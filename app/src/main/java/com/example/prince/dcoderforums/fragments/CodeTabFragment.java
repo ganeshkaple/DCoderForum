@@ -1,23 +1,25 @@
 package com.example.prince.dcoderforums.fragments;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.prince.dcoderforums.R;
+import com.example.prince.dcoderforums.base.BaseFragment;
+import com.example.prince.dcoderforums.base.BaseViewModel;
+
+import butterknife.BindView;
 
 /**
  * A placeholder fragment containing a simple view.
  */
-public class CodeTabFragment extends Fragment {
-    /**
-     * The fragment argument representing the section number for this
-     * fragment.
-     */
-    private static final String ARG_SECTION_NUMBER = "section_number";
+public class CodeTabFragment extends BaseFragment {
+
+    @BindView(R.id.section_label)
+    TextView sectionLabel;
+
 
     public CodeTabFragment() {
     }
@@ -34,9 +36,28 @@ public class CodeTabFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_code, container, false);
-        TextView textView = rootView.findViewById(R.id.section_label);
-        textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
+        super.onCreateView(inflater, container, savedInstanceState);
+        // Inflate the layout for this fragment
+        View rootView = getRootView();
+        sectionLabel.setText(getString(R.string.section_format));
+
         return rootView;
     }
+
+    @Override
+    public int getLayoutId() {
+        return R.layout.fragment_code;
+    }
+
+    @Override
+    protected void subscribeToLiveData() {
+
+    }
+
+    @Override
+    public BaseViewModel getViewModel() {
+        return null;
+    }
+
+
 }

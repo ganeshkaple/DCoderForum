@@ -10,11 +10,16 @@ import com.example.prince.dcoderforums.R;
 import com.example.prince.dcoderforums.base.BaseFragment;
 import com.example.prince.dcoderforums.base.BaseViewModel;
 
+import butterknife.BindView;
+
 /**
  * A placeholder fragment containing a simple view.
  */
 public class ChatTabFragment extends BaseFragment {
 
+
+    @BindView(R.id.section_label)
+    TextView sectionLabel;
 
     public ChatTabFragment() {
     }
@@ -36,8 +41,8 @@ public class ChatTabFragment extends BaseFragment {
         super.onCreateView(inflater, container, savedInstanceState);
         // Inflate the layout for this fragment
         View rootView = getRootView();
-        TextView textView = rootView.findViewById(R.id.section_label);
-        textView.setText(getString(R.string.section_format));
+        sectionLabel.setText(getString(R.string.section_format));
+
         return rootView;
     }
 
@@ -54,5 +59,11 @@ public class ChatTabFragment extends BaseFragment {
     @Override
     public BaseViewModel getViewModel() {
         return null;
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+
     }
 }
