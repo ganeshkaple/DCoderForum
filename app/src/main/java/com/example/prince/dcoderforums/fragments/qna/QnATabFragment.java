@@ -1,5 +1,6 @@
 package com.example.prince.dcoderforums.fragments.qna;
 
+import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +12,8 @@ import com.example.prince.dcoderforums.base.BaseFragment;
 import com.example.prince.dcoderforums.base.BaseViewModel;
 
 import butterknife.BindView;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
 
 /**
  * A placeholder fragment containing a simple view.
@@ -18,6 +21,7 @@ import butterknife.BindView;
 public class QnATabFragment extends BaseFragment {
     @BindView(R.id.section_label)
     TextView sectionLabel;
+    private QnAViewModel viewModel;
 
     public QnATabFragment() {
     }
@@ -47,13 +51,34 @@ public class QnATabFragment extends BaseFragment {
         return R.layout.fragment_qna;
     }
 
+
+    /**
+     * Override so you can observe your viewModel
+     */
     @Override
     protected void subscribeToLiveData() {
+        viewModel.getItemList().subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(chatList -> {
+
+                }, error -> {
+
+                });
 
     }
 
+
+    /**
+     * Override for set view model
+     *
+     * @return view model instance
+     */
     @Override
     public BaseViewModel getViewModel() {
-        return null;
+        viewModel =
+                ViewModelProviders.of(this, viewModelFactory).get(QnAViewModel.class);
+
+        return viewModel;
     }
+
 }

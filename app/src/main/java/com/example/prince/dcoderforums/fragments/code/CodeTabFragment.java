@@ -1,5 +1,6 @@
 package com.example.prince.dcoderforums.fragments.code;
 
+import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +12,8 @@ import com.example.prince.dcoderforums.base.BaseFragment;
 import com.example.prince.dcoderforums.base.BaseViewModel;
 
 import butterknife.BindView;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
 
 /**
  * A placeholder fragment containing a simple view.
@@ -19,6 +22,7 @@ public class CodeTabFragment extends BaseFragment {
 
     @BindView(R.id.section_label)
     TextView sectionLabel;
+    private CodeViewModel codeViewModel;
 
 
     public CodeTabFragment() {
@@ -49,14 +53,34 @@ public class CodeTabFragment extends BaseFragment {
         return R.layout.fragment_code;
     }
 
+
+    /**
+     * Override so you can observe your viewModel
+     */
     @Override
     protected void subscribeToLiveData() {
+        codeViewModel.getItemList().subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(chatList -> {
+
+                }, error -> {
+
+                });
 
     }
 
+
+    /**
+     * Override for set view model
+     *
+     * @return view model instance
+     */
     @Override
     public BaseViewModel getViewModel() {
-        return null;
+        codeViewModel =
+                ViewModelProviders.of(this, viewModelFactory).get(CodeViewModel.class);
+
+        return codeViewModel;
     }
 
 
