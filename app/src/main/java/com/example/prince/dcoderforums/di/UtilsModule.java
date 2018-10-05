@@ -2,10 +2,9 @@ package com.example.prince.dcoderforums.di;
 
 import android.support.annotation.NonNull;
 
-import com.scleroid.financematic.utils.ui.ActivityUtils;
-import com.scleroid.financematic.utils.ui.DateUtils;
-import com.scleroid.financematic.utils.ui.SnackBarUtils;
-import com.scleroid.financematic.utils.ui.TextViewUtils;
+import com.example.prince.dcoderforums.utils.ui.DateUtils;
+import com.example.prince.dcoderforums.utils.ui.SnackBarUtils;
+import com.example.prince.dcoderforums.utils.ui.TextViewUtils;
 
 import javax.inject.Singleton;
 
@@ -28,9 +27,6 @@ public abstract class UtilsModule {
     @Singleton
     abstract TextViewUtils getTextViewUtils();
 
-    @NonNull
-    @Singleton
-    abstract ActivityUtils getActivityUtils();
 
     @NonNull
     @Singleton

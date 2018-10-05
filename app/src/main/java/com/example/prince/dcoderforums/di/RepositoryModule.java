@@ -1,14 +1,11 @@
 package com.example.prince.dcoderforums.di;
 
 import android.app.Application;
-import android.arch.persistence.room.Room;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 
 import com.example.prince.dcoderforums.BuildConfig;
-import com.example.prince.dcoderforums.data.local.AppDatabase;
-import com.example.prince.dcoderforums.data.remote.RemotePostEndpoint;
 import com.example.prince.dcoderforums.data.remote.WebService;
 import com.example.prince.dcoderforums.data.repo.ChatRepo;
 import com.example.prince.dcoderforums.data.repo.CodeRepo;
@@ -51,7 +48,7 @@ abstract public class RepositoryModule {
     private static final int THREAD_COUNT = 3;
 
 
-    @Singleton
+    /*@Singleton
     @Provides
     static AppDatabase provideDb(@NonNull Application context) {
 
@@ -61,7 +58,7 @@ abstract public class RepositoryModule {
                 .fallbackToDestructiveMigration()
                 .build();
     }
-
+*/
     @Singleton
     @Provides
     static SharedPreferences provideSharedPreferences(@NonNull Application context) {
@@ -130,14 +127,14 @@ abstract public class RepositoryModule {
     }
 
 
-    @Singleton
-    @Provides
-    static RemotePostEndpoint providePostWebService(Retrofit retrofit) {
-        //return   retrofit.create(RemotePostEndpoint.class);
-        return retrofit
-                .create(RemotePostEndpoint.class);
-    }
-
+    /*   @Singleton
+       @Provides
+       static RemotePostEndpoint providePostWebService(Retrofit retrofit) {
+           //return   retrofit.create(RemotePostEndpoint.class);
+           return retrofit
+                   .create(RemotePostEndpoint.class);
+       }
+   */
     @Singleton
     @Provides
     static SchedulerProvider provideSchedulerProvider() {

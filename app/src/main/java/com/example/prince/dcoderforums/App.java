@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 
 import com.example.prince.dcoderforums.di.AppComponent;
 import com.example.prince.dcoderforums.di.AppInjector;
+import com.example.prince.dcoderforums.di.DaggerAppComponent;
 
 import dagger.android.AndroidInjector;
 import dagger.android.DaggerApplication;
