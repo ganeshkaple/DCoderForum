@@ -27,6 +27,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.prince.dcoderforums.di.Injectable;
+
 import javax.inject.Inject;
 
 import butterknife.ButterKnife;
@@ -39,7 +41,7 @@ import dagger.android.support.AndroidSupportInjection;
  * @param <V> generic viewmodel object
  */
 
-public abstract class BaseFragment<V extends BaseViewModel> extends Fragment {
+public abstract class BaseFragment<V extends BaseViewModel> extends Fragment implements Injectable {
 
     /**
      * Viewmodel Factory object, injected via DI
@@ -86,10 +88,10 @@ public abstract class BaseFragment<V extends BaseViewModel> extends Fragment {
      */
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
-        performDependencyInjection();
+
         super.onCreate(savedInstanceState);
 
-
+        //performDependencyInjection();
         final V mViewModel = getViewModel();
         setHasOptionsMenu(false);
     }
@@ -185,7 +187,8 @@ public abstract class BaseFragment<V extends BaseViewModel> extends Fragment {
     protected abstract void subscribeToLiveData();
 
     private void performDependencyInjection() {
-        AndroidSupportInjection.inject(this);
+        if (this != null)
+            AndroidSupportInjection.inject(this);
     }
 
     /**

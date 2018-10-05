@@ -4,6 +4,8 @@ package com.example.prince.dcoderforums.di;
 import android.app.Application;
 import android.support.annotation.NonNull;
 
+import com.example.prince.dcoderforums.App;
+
 import javax.inject.Singleton;
 
 import dagger.BindsInstance;

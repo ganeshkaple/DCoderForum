@@ -1,7 +1,9 @@
 package com.example.prince.dcoderforums.fragments.thread;
 
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +14,7 @@ import com.example.prince.dcoderforums.base.BaseFragment;
 import com.example.prince.dcoderforums.base.BaseViewModel;
 
 import butterknife.BindView;
+import dagger.android.support.AndroidSupportInjection;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
@@ -51,6 +54,11 @@ public class ThreadTabFragment extends BaseFragment {
         return R.layout.fragment_threads;
     }
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
+
 
     /**
      * Override so you can observe your viewModel
@@ -81,4 +89,9 @@ public class ThreadTabFragment extends BaseFragment {
         return viewModel;
     }
 
+    @Override
+    public void onAttach(Context context) {
+        AndroidSupportInjection.inject(this);
+        super.onAttach(context);
+    }
 }

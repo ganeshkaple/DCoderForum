@@ -6,10 +6,6 @@ import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
-import com.example.prince.dcoderforums.utils.eventbus.GlobalBus;
-
-import org.greenrobot.eventbus.EventBus;
-
 import dagger.android.AndroidInjection;
 import dagger.android.support.HasSupportFragmentInjector;
 
@@ -31,7 +27,7 @@ public abstract class BaseActivity
      * THis initializes Eventbus with singleton pattern,
      * Not included via dagger because it is used in places where dagger isn't available
      */
-    EventBus eventBus = GlobalBus.getBus();
+
     // this can probably depend on isLoading variable of BaseViewModel,
     // since its going to be common for all the activities
     private ProgressDialog mProgressDialog;
@@ -76,7 +72,7 @@ public abstract class BaseActivity
     @Override
     protected void onPause() {
         super.onPause();
-        eventBus.unregister(this);
+
     }
 
     /**
@@ -86,7 +82,7 @@ public abstract class BaseActivity
     @Override
     public void onResume() {
         super.onResume();
-        eventBus.register(this);
+
 
     }
 

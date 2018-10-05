@@ -77,7 +77,7 @@ dependencies {
     //  implementation "com.birbit:android-priority-jobqueue:$project.priorityJobQueueVersion"
 
     //GCM Network Manager
-    implementation "com.google.android.gms:play-services-gcm:$project.playServicesVersion"
+   // implementation "com.google.android.gms:play-services-gcm:$project.playServicesVersion"
 
     // ButterKnife
     implementation "com.jakewharton:butterknife:$rootProject.butterKnifeVersion"
@@ -100,7 +100,7 @@ dependencies {
     //Retrofit
     implementation "com.squareup.retrofit2:retrofit:$rootProject.retrofitVersion"
     implementation "com.squareup.retrofit2:converter-gson:$rootProject.retrofitVersion"
-    implementation 'com.birbit:android-priority-jobqueue:2.0.1'
+    //implementation 'com.birbit:android-priority-jobqueue:2.0.1'
 
     // OkHttp Logging Interceptor
     implementation "com.squareup.okhttp3:okhttp:$rootProject.okHttpVersion"
@@ -129,7 +129,7 @@ dependencies {
   //  implementation 'com.github.blocoio:faker:1.2.7'
 
     //Eventbus by greenrobot
-    implementation 'org.greenrobot:eventbus:3.1.1'
+  //  implementation 'org.greenrobot:eventbus:3.1.1'
 
 
 

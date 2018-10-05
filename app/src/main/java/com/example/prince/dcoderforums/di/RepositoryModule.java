@@ -19,8 +19,6 @@ import com.example.prince.dcoderforums.utils.rx.SchedulerProvider;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import org.greenrobot.eventbus.EventBus;
-
 import java.util.concurrent.Executors;
 
 import javax.inject.Singleton;
@@ -77,11 +75,6 @@ abstract public class RepositoryModule {
     }
 
 
-    @Singleton
-    @Provides
-    static EventBus providesGlobalBus() {
-        return EventBus.getDefault();
-    }
 
 
     @NonNull

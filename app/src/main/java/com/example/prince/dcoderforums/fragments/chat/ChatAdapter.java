@@ -88,7 +88,7 @@ class ChatAdapter extends RecyclerView.Adapter {
         return messageList.size();
     }
 
-    private class SentMessageHolder extends RecyclerView.ViewHolder {
+    class SentMessageHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.message_body)
         TextView messageBody;
         @BindView(R.id.avatar)
@@ -108,7 +108,7 @@ class ChatAdapter extends RecyclerView.Adapter {
         }
     }
 
-    private class ReceivedMessageHolder extends RecyclerView.ViewHolder {
+    class ReceivedMessageHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.avatar)
         ImageView avatar;
         @BindView(R.id.name)
