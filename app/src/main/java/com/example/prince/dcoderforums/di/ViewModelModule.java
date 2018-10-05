@@ -4,12 +4,11 @@ import android.arch.lifecycle.ViewModel;
 import android.arch.lifecycle.ViewModelProvider;
 import android.support.annotation.NonNull;
 
-import com.scleroid.financematic.fragments.customer.CustomerViewModel;
-import com.scleroid.financematic.fragments.dashboard.DashboardViewModel;
-import com.scleroid.financematic.fragments.expense.ExpenseViewModel;
-import com.scleroid.financematic.fragments.loandetails.LoanDetailsViewModel;
-import com.scleroid.financematic.fragments.people.PeopleViewModel;
-import com.scleroid.financematic.utils.ViewModelFactory;
+import com.example.prince.dcoderforums.fragments.chat.ChatViewModel;
+import com.example.prince.dcoderforums.fragments.code.CodeViewModel;
+import com.example.prince.dcoderforums.fragments.qna.QnAViewModel;
+import com.example.prince.dcoderforums.fragments.thread.ThreadViewModel;
+import com.example.prince.dcoderforums.utils.ViewModelFactory;
 
 import dagger.Binds;
 import dagger.Module;
@@ -27,32 +26,27 @@ public abstract class ViewModelModule {
     @NonNull
     @Binds
     @IntoMap
-    @ViewModelKey(CustomerViewModel.class)
-    abstract ViewModel bindCustomerViewModel(CustomerViewModel userViewModel);
+    @ViewModelKey(ChatViewModel.class)
+    abstract ViewModel bindChatViewModel(ChatViewModel userViewModel);
 
     @NonNull
     @Binds
     @IntoMap
-    @ViewModelKey(ExpenseViewModel.class)
-    abstract ViewModel bindExpenseViewModel(ExpenseViewModel expenseViewModel);
+    @ViewModelKey(CodeViewModel.class)
+    abstract ViewModel bindCodeViewModel(CodeViewModel expenseViewModel);
 
     @NonNull
     @Binds
     @IntoMap
-    @ViewModelKey(LoanDetailsViewModel.class)
-    abstract ViewModel bindLoanDetailsViewModel(LoanDetailsViewModel loanDetailsViewModel);
+    @ViewModelKey(QnAViewModel.class)
+    abstract ViewModel bindQnAViewModel(QnAViewModel loanDetailsViewModel);
 
     @NonNull
     @Binds
     @IntoMap
-    @ViewModelKey(PeopleViewModel.class)
-    abstract ViewModel bindPeopleViewModel(PeopleViewModel peopleViewModel);
+    @ViewModelKey(ThreadViewModel.class)
+    abstract ViewModel bindPeopleViewModel(ThreadViewModel peopleViewModel);
 
-    @NonNull
-    @Binds
-    @IntoMap
-    @ViewModelKey(DashboardViewModel.class)
-    abstract ViewModel bindDashboardViewModel(DashboardViewModel dashboardViewModel);
 
 
     @NonNull

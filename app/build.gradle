@@ -92,7 +92,7 @@ dependencies {
     //Material Style Dialog
    // implementation 'com.github.javiersantos:MaterialStyledDialogs:2.1'
     //Toasty
-  //  implementation 'com.github.GrenderG:Toasty:1.2.5'
+   implementation 'com.github.GrenderG:Toasty:1.2.5'
 
     // Glide image library
     //  implementation "com.github.bumptech.glide:glide:$rootProject.glideVersion"
@@ -134,3 +134,4 @@ dependencies {
 
 
 }
+apply plugin: 'com.jakewharton.hugo'
