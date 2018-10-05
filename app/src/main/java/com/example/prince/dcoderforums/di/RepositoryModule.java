@@ -6,28 +6,21 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 
+import com.example.prince.dcoderforums.BuildConfig;
+import com.example.prince.dcoderforums.data.local.AppDatabase;
+import com.example.prince.dcoderforums.data.remote.RemotePostEndpoint;
+import com.example.prince.dcoderforums.data.remote.WebService;
+import com.example.prince.dcoderforums.data.repo.ChatRepo;
+import com.example.prince.dcoderforums.data.repo.CodeRepo;
+import com.example.prince.dcoderforums.data.repo.QnARepo;
+import com.example.prince.dcoderforums.data.repo.ThreadRepo;
+import com.example.prince.dcoderforums.utils.multithread.AppExecutors;
+import com.example.prince.dcoderforums.utils.multithread.DiskIOThreadExecutor;
+import com.example.prince.dcoderforums.utils.network.livedata.LiveDataCallAdapterFactory;
+import com.example.prince.dcoderforums.utils.rx.AppSchedulerProvider;
+import com.example.prince.dcoderforums.utils.rx.SchedulerProvider;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.scleroid.financematic.BuildConfig;
-import com.scleroid.financematic.data.local.AppDatabase;
-import com.scleroid.financematic.data.local.dao.CustomerDao;
-import com.scleroid.financematic.data.local.dao.ExpenseDao;
-import com.scleroid.financematic.data.local.dao.InstallmentDao;
-import com.scleroid.financematic.data.local.dao.LoanDao;
-import com.scleroid.financematic.data.local.dao.TransactionDao;
-import com.scleroid.financematic.data.remote.RemotePostEndpoint;
-import com.scleroid.financematic.data.remote.WebService;
-import com.scleroid.financematic.data.remote.services.jobs.utils.GcmJobService;
-import com.scleroid.financematic.data.repo.CustomerRepo;
-import com.scleroid.financematic.data.repo.ExpenseRepo;
-import com.scleroid.financematic.data.repo.InstallmentRepo;
-import com.scleroid.financematic.data.repo.LoanRepo;
-import com.scleroid.financematic.data.repo.TransactionsRepo;
-import com.scleroid.financematic.utils.multithread.AppExecutors;
-import com.scleroid.financematic.utils.multithread.DiskIOThreadExecutor;
-import com.scleroid.financematic.utils.network.livedata.LiveDataCallAdapterFactory;
-import com.scleroid.financematic.utils.rx.AppSchedulerProvider;
-import com.scleroid.financematic.utils.rx.SchedulerProvider;
 
 import org.greenrobot.eventbus.EventBus;
 
@@ -93,35 +86,6 @@ abstract public class RepositoryModule {
         return EventBus.getDefault();
     }
 
-    @Singleton
-    @Provides
-    static LoanDao provideLoanDao(AppDatabase db) {
-        return db.loanDao();
-    }
-
-    @Singleton
-    @Provides
-    static ExpenseDao provideExpenseDao(AppDatabase db) {
-        return db.expenseDao();
-    }
-
-    @Singleton
-    @Provides
-    static CustomerDao provideCustomerDao(AppDatabase db) {
-        return db.customerDao();
-    }
-
-    @Singleton
-    @Provides
-    static TransactionDao provideTransactionsDao(AppDatabase db) {
-        return db.transactionDao();
-    }
-
-    @Singleton
-    @Provides
-    static InstallmentDao provideInstallmentDao(AppDatabase db) {
-        return db.installmentDao();
-    }
 
     @NonNull
     @Provides
@@ -188,11 +152,6 @@ abstract public class RepositoryModule {
                 new AppExecutors.MainThreadExecutor());
     }
 
-    @Singleton
-    @Provides
-    static GcmJobService provideGcmJobService() {
-        return new GcmJobService();
-    }
 
     @NonNull
     @Provides
@@ -225,23 +184,18 @@ abstract public class RepositoryModule {
 
     @NonNull
     @Singleton
-    abstract LoanRepo provideLoanRepo(AppDatabase db);
+    abstract ChatRepo provideLoanRepo();
 
     @NonNull
     @Singleton
-    abstract ExpenseRepo provideExpenseRepo(AppDatabase db);
+    abstract CodeRepo provideCodeRepo();
 
     @NonNull
     @Singleton
-    abstract CustomerRepo provideCustomerRepo(AppDatabase db);
+    abstract QnARepo provideQnARepo();
 
     @NonNull
     @Singleton
-    abstract InstallmentRepo provideInstallmentRepo(AppDatabase db);
-
-    @NonNull
-    @Singleton
-    abstract TransactionsRepo provideTransactionsRepo(AppDatabase db);
-
+    abstract ThreadRepo provideThreadRepo();
 
 }

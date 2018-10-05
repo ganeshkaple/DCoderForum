@@ -1,22 +1,16 @@
 package com.example.prince.dcoderforums.data.remote;
 
-import android.arch.lifecycle.LiveData;
 import android.support.annotation.NonNull;
 
-import com.scleroid.financematic.data.local.model.Customer;
-import com.scleroid.financematic.data.local.model.Expense;
-import com.scleroid.financematic.data.local.model.Installment;
-import com.scleroid.financematic.data.local.model.Loan;
-import com.scleroid.financematic.data.local.model.TransactionModel;
+import com.example.prince.dcoderforums.data.model.Chat;
+import com.example.prince.dcoderforums.data.model.Code;
+import com.example.prince.dcoderforums.data.model.QnA;
 
 import java.util.List;
 
 import hugo.weaving.DebugLog;
-import retrofit2.http.Field;
-import retrofit2.http.FormUrlEncoded;
+import io.reactivex.Observable;
 import retrofit2.http.GET;
-import retrofit2.http.POST;
-import retrofit2.http.Path;
 
 /**
  * Copyright (C) 2018
@@ -25,77 +19,54 @@ import retrofit2.http.Path;
  * @since 4/5/18
  */
 public interface WebService {
+/*
     @NonNull
     @FormUrlEncoded
     @DebugLog
     @POST("/mobile/registerusercid")
-    LiveData<ApiResponse<Customer>> getCustomer(@Field("customer_id") int customerId);
+    Observable<Chat> getChat(@Field("chat_id") int chatId);
+*/
 
     @NonNull
     @DebugLog
-    @GET("/mobile/registerusers")
-    LiveData<ApiResponse<List<Customer>>> getCustomers();
+    @GET("/chat.json")
+    Observable<List<Chat>> getChats();
+
+    /* @NonNull
+     @DebugLog
+     @POST("/mobile/lastinsertnewuserthread_id")
+     Observable<Thread> getThread(@Field("thread") int threadId);
+ */
+    @NonNull
+    @DebugLog
+    @GET("/threads.json")
+    Observable<List<Thread>> getThreads();
+
 
     @NonNull
     @DebugLog
-    @POST("/mobile/lastinsertnewuserloan_id")
-    LiveData<ApiResponse<Loan>> getLoan(@Field("loan") int loanId);
-
-    @NonNull
-    @DebugLog
-    @GET("/mobile/loandetaillist")
-    LiveData<ApiResponse<List<Loan>>> getLoans();
-
-    //done
-    @NonNull
-    @DebugLog
-    @GET("/mobile/loandetailloanact/{customer_id}")
-    LiveData<ApiResponse<List<Loan>>> getLoans(@Path("customer_id") int customerId);
-
-    @NonNull
-    @DebugLog
-    @GET("/mobile/getexpenditure")
-    LiveData<ApiResponse<List<Expense>>> getExpenses();
+    @GET("/qna.json")
+    Observable<List<QnA>> getQnAs();
 
 
-    @NonNull
+   /* @NonNull
     @DebugLog
     @GET("/mobile/getexpenditureid/{id}")
-    LiveData<ApiResponse<Expense>> getExpense(@Path("id") int expenseNo);
+    Observable<QnA> getQnA(@Path("id") int qnANo);
 
-    @NonNull
-    @FormUrlEncoded
-    @DebugLog
-    @POST("/mobile/transactionloan_id/")
-    LiveData<ApiResponse<List<TransactionModel>>> getTransactionsForLoan(
-            @Field("loan_id") int loanAcNo);
+*/
 
-    //Done
+/*
     @NonNull
     @DebugLog
-    @GET("/mobile/transaction/")
-    LiveData<ApiResponse<List<TransactionModel>>> getTransactions();
+    @GET("/mobile/codethread/{codeNo}")
+    Observable<Code> getCode(@Path("codeNo") int codeNo);
+*/
 
     @NonNull
     @DebugLog
-    @FormUrlEncoded
-    @POST("/mobile/transactiontransaction_id/")
-    LiveData<ApiResponse<TransactionModel>> getTransaction(
-            @Field("transaction_id") int transactionNo);
+    @GET("/codes.json")
+    Observable<List<Code>> getCodes();
 
-    @NonNull
-    @DebugLog
-    @GET("/mobile/installmentloan/{installmentNo}")
-    LiveData<ApiResponse<Installment>> getInstallment(@Path("installmentNo") int installmentNo);
 
-    @NonNull
-    @DebugLog
-    @GET("/mobile/installmentlist/")
-    LiveData<ApiResponse<List<Installment>>> getInstallments();
-
-    //Done
-    @NonNull
-    @DebugLog
-    @GET("/mobile/installementloan_id/{loan_id}")
-    LiveData<ApiResponse<List<Installment>>> getInstallmentsForLoan(@Path("loan_id") int loanAcNo);
 }
