@@ -8,7 +8,6 @@ import com.example.prince.dcoderforums.data.model.QnA;
 
 import java.util.List;
 
-import hugo.weaving.DebugLog;
 import io.reactivex.Observable;
 import retrofit2.http.GET;
 
@@ -28,7 +27,7 @@ public interface WebService {
 */
 
     @NonNull
-    @DebugLog
+
     @GET("/chat.json")
     Observable<List<Chat>> getChats();
 
@@ -38,13 +37,13 @@ public interface WebService {
      Observable<Thread> getThread(@Field("thread") int threadId);
  */
     @NonNull
-    @DebugLog
+
     @GET("/threads.json")
     Observable<List<Thread>> getThreads();
 
 
     @NonNull
-    @DebugLog
+
     @GET("/qna.json")
     Observable<List<QnA>> getQnAs();
 
@@ -64,7 +63,7 @@ public interface WebService {
 */
 
     @NonNull
-    @DebugLog
+
     @GET("/codes.json")
     Observable<List<Code>> getCodes();
 

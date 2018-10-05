@@ -27,7 +27,8 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
         switch (position) {
 
             case 0:
-                return ChatTabFragment.newInstance();
+                return PlaceholderFragment.newInstance();
+            /*     return ChatTabFragment.newInstance();*/
 
             case 1:
                 return ThreadTabFragment.newInstance();
@@ -37,6 +38,8 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
             case 3:
                 return CodeTabFragment.newInstance();
+            case 4:
+                return ChatTabFragment.newInstance();
         }
         return PlaceholderFragment.newInstance();
     }
@@ -44,6 +47,6 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
     @Override
     public int getCount() {
         // Show 4 total pages.
-        return 4;
+        return 5;
     }
 }

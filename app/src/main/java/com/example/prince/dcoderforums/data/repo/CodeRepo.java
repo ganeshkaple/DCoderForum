@@ -7,6 +7,8 @@ import com.example.prince.dcoderforums.utils.multithread.AppExecutors;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
 import io.reactivex.Completable;
 import io.reactivex.Observable;
 
@@ -14,6 +16,7 @@ public class CodeRepo implements BaseRepo<Code> {
     private final WebService webService;
     private final AppExecutors appExecutors;
 
+    @Inject
     public CodeRepo(WebService webService, AppExecutors appExecutors) {
         this.webService = webService;
         this.appExecutors = appExecutors;

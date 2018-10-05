@@ -1,7 +1,6 @@
 package com.example.prince.dcoderforums.fragments.chat;
 
 import android.arch.lifecycle.ViewModelProviders;
-import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -12,7 +11,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.TextView;
 
 import com.example.prince.dcoderforums.R;
 import com.example.prince.dcoderforums.base.BaseFragment;
@@ -23,7 +21,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import dagger.android.support.AndroidSupportInjection;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
@@ -37,13 +34,6 @@ public class ChatTabFragment extends BaseFragment {
         super.onCreate(savedInstanceState);
     }
 
-    @Override
-    public void onAttach(Context context) {
-        AndroidSupportInjection.inject(this);
-        super.onAttach(context);
-    }
-    @BindView(R.id.section_label)
-    TextView sectionLabel;
     @BindView(R.id.messages_view)
     RecyclerView recyclerView;
     @BindView(R.id.msg_editText)
@@ -76,7 +66,6 @@ public class ChatTabFragment extends BaseFragment {
         super.onCreateView(inflater, container, savedInstanceState);
         // Inflate the layout for this fragment
         View rootView = getRootView();
-        sectionLabel.setText(getString(R.string.section_format));
 
 
         initiateRecyclerView();
@@ -125,7 +114,7 @@ public class ChatTabFragment extends BaseFragment {
         chatViewModel.getItemList().subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(chatList -> {
-                    adapter.setMessageList(chatList);
+                    // adapter.setMessageList(chatList);
                 }, error -> {
 
                 });

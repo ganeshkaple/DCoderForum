@@ -1,6 +1,5 @@
 package com.example.prince.dcoderforums.fragments;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,7 +11,6 @@ import com.example.prince.dcoderforums.base.BaseFragment;
 import com.example.prince.dcoderforums.base.BaseViewModel;
 
 import butterknife.BindView;
-import dagger.android.support.AndroidSupportInjection;
 
 /**
  * A placeholder fragment containing a simple view.
@@ -55,11 +53,7 @@ public class PlaceholderFragment extends BaseFragment {
 
     }
 
-    @Override
-    public void onAttach(Context context) {
-        AndroidSupportInjection.inject(this);
-        super.onAttach(context);
-    }
+
     @Override
     public BaseViewModel getViewModel() {
         return null;

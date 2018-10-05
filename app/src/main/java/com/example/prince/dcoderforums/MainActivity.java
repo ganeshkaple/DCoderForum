@@ -11,9 +11,13 @@ import android.view.MenuItem;
 
 import com.example.prince.dcoderforums.base.BaseActivity;
 
-import dagger.android.AndroidInjector;
+import javax.inject.Inject;
 
-public class MainActivity extends BaseActivity {
+import dagger.android.AndroidInjector;
+import dagger.android.DispatchingAndroidInjector;
+import dagger.android.support.HasSupportFragmentInjector;
+
+public class MainActivity extends BaseActivity implements HasSupportFragmentInjector {
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -29,6 +33,19 @@ public class MainActivity extends BaseActivity {
      * The {@link ViewPager} that will host the section contents.
      */
     private ViewPager mViewPager;
+
+
+    @Inject
+    DispatchingAndroidInjector<Fragment> fragmentDispatchingAndroidInjector;
+
+
+    /**
+     * Returns an {@link AndroidInjector} of {@link Fragment}s.
+     */
+    @Override
+    public AndroidInjector<Fragment> supportFragmentInjector() {
+        return fragmentDispatchingAndroidInjector;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,8 +99,4 @@ public class MainActivity extends BaseActivity {
     }
 
 
-    @Override
-    public AndroidInjector<Fragment> supportFragmentInjector() {
-        return null;
-    }
 }

@@ -13,11 +13,11 @@ import com.example.prince.dcoderforums.data.repo.QnARepo;
 import com.example.prince.dcoderforums.data.repo.ThreadRepo;
 import com.example.prince.dcoderforums.utils.multithread.AppExecutors;
 import com.example.prince.dcoderforums.utils.multithread.DiskIOThreadExecutor;
-import com.example.prince.dcoderforums.utils.network.livedata.LiveDataCallAdapterFactory;
 import com.example.prince.dcoderforums.utils.rx.AppSchedulerProvider;
 import com.example.prince.dcoderforums.utils.rx.SchedulerProvider;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 
 import java.util.concurrent.Executors;
 
@@ -105,7 +105,7 @@ abstract public class RepositoryModule {
         return new Retrofit.Builder()
                 .baseUrl(BuildConfig.API_BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create(gson))
-                .addCallAdapterFactory(new LiveDataCallAdapterFactory())
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .client(okHttpClient)
                 .build();
     }
