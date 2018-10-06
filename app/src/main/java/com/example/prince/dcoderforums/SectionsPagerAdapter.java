@@ -27,8 +27,7 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
         switch (position) {
 
             case 0:
-                return PlaceholderFragment.newInstance();
-            /*     return ChatTabFragment.newInstance();*/
+                return ChatTabFragment.newInstance();
 
             case 1:
                 return ThreadTabFragment.newInstance();

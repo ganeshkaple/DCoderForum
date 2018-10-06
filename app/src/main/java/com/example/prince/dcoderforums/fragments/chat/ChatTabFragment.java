@@ -3,7 +3,6 @@ package com.example.prince.dcoderforums.fragments.chat;
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -21,8 +20,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.schedulers.Schedulers;
 
 /**
  * A placeholder fragment containing a simple view.
@@ -76,7 +73,7 @@ public class ChatTabFragment extends BaseFragment {
     private void initiateRecyclerView() {
         adapter = new ChatAdapter(getContext(), messageList);
 
-        recyclerView.setHasFixedSize(true);
+        //      recyclerView.setHasFixedSize(true);
 
         //	updateUi();
 
@@ -85,7 +82,7 @@ public class ChatTabFragment extends BaseFragment {
         // vertical RecyclerView
         // keep movie_list_row.xml width to `match_parent`
         RecyclerView.LayoutManager mLayoutManager =
-                new LinearLayoutManager(getActivity().getApplicationContext());
+                new LinearLayoutManager(getActivity());
 
         // horizontal RecyclerView
         // keep movie_list_row.xml width to `wrap_content`
@@ -95,7 +92,7 @@ public class ChatTabFragment extends BaseFragment {
         recyclerView.setLayoutManager(mLayoutManager);
 
 
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        //     recyclerView.setItemAnimator(new DefaultItemAnimator());
 
         recyclerView.setAdapter(adapter);
     }
@@ -111,13 +108,13 @@ public class ChatTabFragment extends BaseFragment {
      */
     @Override
     protected void subscribeToLiveData() {
-        chatViewModel.getItemList().subscribeOn(Schedulers.io())
+/*        chatViewModel.getItemList().subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(chatList -> {
-                    // adapter.setMessageList(chatList);
+                     adapter.setMessageList(chatList);
                 }, error -> {
 
-                });
+                });*/
 
     }
 
